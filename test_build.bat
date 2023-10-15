@@ -1,0 +1,17 @@
+cmake ^
+    -G "Visual Studio 17 2022" ^
+    -A x64 ^
+    -B build ^
+    -S . ^
+    -DIGL_WITH_SAMPLES=OFF ^
+    -DIGL_WITH_OPENGL=OFF ^
+    -DIGL_WITH_OPENGLES=OFF ^
+    -DIGL_WITH_VULKAN=ON ^
+    -DIGL_WITH_METAL=OFF ^
+    -DIGL_WITH_WEBGL=OFF ^
+    -DIGL_WITH_IGLU=OFF ^
+    -DIGL_WITH_SHELL=OFF ^
+    -DIGL_WITH_TESTS=OFF ^
+    -DIGL_WITH_TRACY=OFF ^
+    -DIGL_ENFORCE_LOGS=ON ^
+    -DIGL_DEPLOY_DEPS=OFF

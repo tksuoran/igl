@@ -9,6 +9,15 @@ project(IGLLibrary CXX C)
 
 add_definitions("-DIGL_CMAKE_BUILD=1")
 
+FetchContent_Declare(
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG        origin/master
+    GIT_SHALLOW    TRUE
+    GIT_PROGRESS   TRUE
+)
+FetchContent_MakeAvailable(glm)
+
 file(GLOB SRC_FILES LIST_DIRECTORIES false RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 file(GLOB HEADER_FILES LIST_DIRECTORIES false RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.h)
 
@@ -20,7 +29,8 @@ endif()
 add_library(IGLLibrary ${SRC_FILES} ${HEADER_FILES})
 
 target_include_directories(IGLLibrary PUBLIC "${IGL_ROOT_DIR}/src")
-target_include_directories(IGLLibrary PUBLIC "${IGL_ROOT_DIR}/third-party/deps/src/glm")
+#target_include_directories(IGLLibrary PUBLIC "${IGL_ROOT_DIR}/third-party/deps/src/glm")
+target_link_libraries(IGLLibrary PUBLIC glm::glm)
 
 if(NOT EMSCRIPTEN)
   target_link_libraries(IGLLibrary PUBLIC fmt)
